@@ -48,7 +48,7 @@ export const changeCheckGenreAction = (id) => (dispatch, getState) => {
         return genres.map(item => {
             
             if (item['id'] === id) {
-                item['check'] = true
+                item['check'] = !item['check']? true: false
                 return item
             }
             return item

@@ -9,6 +9,6 @@ export default {
 export const MovieExample = () => (
     <Movie
     title='GG ICI' 
-    overview='muy ici pah'
-    img='https://image.tmdb.org/t/p/w500/2z8mFQrT0ESSytWZqro1jsCbvCC.jpg' />
+    releaseData='muy ici pah'
+    img='/2z8mFQrT0ESSytWZqro1jsCbvCC.jpg' />
 )

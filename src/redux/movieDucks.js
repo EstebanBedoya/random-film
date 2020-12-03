@@ -3,7 +3,8 @@ import { credentials } from '../config'
 
 // consts
 const dataInit = {
-    moviesArr: []
+    moviesArr: [],
+    page: 1
 }
 
 const { baseUrl, apiKey } = credentials
@@ -15,7 +16,7 @@ export default function movieReducer(state = dataInit, action) {
     switch (action.type) {
         case GET_MOVIES_SUCCESS:
 
-            return { ...state, moviesArr: action.payload }
+            return { ...state, moviesArr: action.payload.res, page: action.payload.page }
 
         default:
             return state
@@ -23,14 +24,16 @@ export default function movieReducer(state = dataInit, action) {
 }
 
 // actions 
-export const getPopularMoviesActions = (page) => async (dispatch) => {
+export const getPopularMoviesActions = (value) => async (dispatch) => {
 
-    // 'https://api.themoviedb.org/3/movie/popular?api_key=b6ae30af174c58ba41ba6a4af122f4aa'
     try {
-        const res = await axios.get(`${baseUrl}/movie/popular?api_key=${apiKey}&page=${page}`)
+        const res = await axios.get(`${baseUrl}/movie/popular?api_key=${apiKey}&page=${value}`)
         dispatch({
             type: GET_MOVIES_SUCCESS,
-            payload: res.data.results
+            payload: {
+                res: res.data.results,
+                page: value
+            }
         })
     } catch (error) {
         console.log(error)

@@ -20,7 +20,8 @@ const SwitchFilter = ({ name, id }) => {
 }
 
 SwitchFilter.propTypes = {
-
+    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired
 }
 
 export default SwitchFilter

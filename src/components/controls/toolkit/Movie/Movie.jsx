@@ -5,41 +5,30 @@ import {
     CardContent,
     CardMedia,
     Typography,
-    makeStyles
 } from '@material-ui/core'
 import { credentials } from '../../../../config'
+import { useFourThreeCardMediaStyles } from '@mui-treasury/styles/cardMedia/fourThree'
+import { useStyles } from './style'
 
 const { urlImage } = credentials
 
-const useStyles = makeStyles({
-    root: {
-        maxWidth: 320,
-    },
-    media: {
-        height: 250,
-    },
-});
-
 const Movie = ({ title, releaseData, img }) => {
-    const classes = useStyles();
+    const classes = useStyles()
+    const mediaStyles = useFourThreeCardMediaStyles();
     const image = `${urlImage}/${img}`
+
     return (
-        <Card className={classes.root}>
-            <CardActionArea>
-                <CardMedia
-                    className={classes.media}
-                    image={image}
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+        <CardActionArea className={classes.actionArea}>
+            <Card className={classes.card}>
+                <CardMedia classes={mediaStyles} image={image} />
+                <CardContent className={classes.content}>
+                    <Typography className={classes.title} variant={'h2'}>
                         {title}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {releaseData}
-                    </Typography>
+                    <Typography className={classes.subtitle}>{releaseData}</Typography>
                 </CardContent>
-            </CardActionArea>
-        </Card>
+            </Card>
+        </CardActionArea>
     )
 }
 

@@ -10,13 +10,12 @@ const Recommend = props => {
     const store = generateStore()
     return (
         <Provider store={store}>
-            <AppFrame>
+            <AppFrame />
             <h1>se le quiere</h1>
 
                 <FilterMovie />
                 <GetRandomMovie />
                 
-            </AppFrame>
 
         </Provider >
     )
